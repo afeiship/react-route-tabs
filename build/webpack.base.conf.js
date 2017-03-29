@@ -11,7 +11,7 @@ var cssSourceMapProd = (env === 'production' && config.build.productionSourceMap
 var useCssSourceMap = cssSourceMapDev || cssSourceMapProd;
 var externals = process.env.NODE_ENV === 'production' ? {
   'react': 'React',
-  'classnames': 'classNames',
+  'classNames': 'classNames',
   'react-dom': 'ReactDOM',
   'react-link': 'ReactLink'
 } : {};
