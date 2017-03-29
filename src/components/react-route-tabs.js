@@ -1,7 +1,7 @@
 import './style.scss';
 import ReactLink from 'react-link';
 import React,{PureComponent,PropTypes} from 'react';
-import classNames from 'classNames';
+import classNames from 'classnames';
 
 
 export default class extends PureComponent {
