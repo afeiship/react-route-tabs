@@ -4,7 +4,7 @@ import React,{PureComponent,PropTypes} from 'react';
 import classNames from 'classnames';
 
 
-export default class extends React.Component {
+export default class extends PureComponent {
   static propTypes = {
     className:PropTypes.string,
     method:PropTypes.string,
