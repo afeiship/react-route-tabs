@@ -1,8 +1,11 @@
 import './style.scss';
-import ReactLink from 'react-link';
-import React,{PureComponent,PropTypes} from 'react';
-import classNames from 'classnames';
 
+import React,{PureComponent} from 'react';
+
+import PropTypes from 'prop-types';
+import ReactLink from 'react-link';
+import classNames from 'classnames';
+import noop from 'noop';
 
 export default class extends React.Component {
   static propTypes = {
@@ -23,14 +26,14 @@ export default class extends React.Component {
   };
 
   render() {
-    const {className, items, method, mapping} = this.props;
+    const {className, items, method, mapping,onClick} = this.props;
     return (
       <div className={classNames('react-route-tabs',className)}>
         {
           items.map((item,index)=>{
             return (
               <div key={index} className="react-route-item">
-                <ReactLink method={method} href={`#/${item[mapping.route]}`}>{item[mapping.content]}</ReactLink>
+                <ReactLink method={item.method || method} onClick={item.onClick || onClick} href={`#/${item[mapping.route]}`}>{item[mapping.content]}</ReactLink>
               </div>
             )
           })

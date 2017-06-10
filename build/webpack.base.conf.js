@@ -14,6 +14,7 @@ var externals = process.env.NODE_ENV === 'production' ? {
   classnames: 'classnames',
   'react-dom': 'react-dom',
   'react-link': 'react-link',
+  'prop-types': 'prop-types',
   'noop': 'noop',
 } : {};
 

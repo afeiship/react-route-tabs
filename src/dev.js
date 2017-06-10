@@ -1,8 +1,11 @@
 import './dev.scss';
+
 import ReactRouteTabs from './main';
 
-
 class App extends React.Component{
+  _onClick(a,b){
+    console.log('this',a,b)
+  }
 
   render(){
     const items = [
@@ -24,7 +27,11 @@ class App extends React.Component{
       },
       {
         route: 'draft',
-        content: '草稿箱'
+        content: '草稿箱',
+        method: 'other',
+        onClick: function(){
+          console.log('other...')
+        }
       }
     ];
     return (
