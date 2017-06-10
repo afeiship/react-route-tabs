@@ -2,19 +2,68 @@
 > React tabs with routes.
 
 
-## resource:
-+ http://www.cnblogs.com/Kummy/p/4966937.html
-+ https://github.com/steven5538/vue-button
-+ https://yarnpkg.com/en/docs/install
+## usage:
+```jsx
+import ReactRouteTabs from 'react-route-tabs';
 
+class App extends React.Component{
+  _onClick(a,b){
+    console.log('this',a,b)
+  }
+
+  render(){
+    const items = [
+      {
+        route: 'bidding',
+        content: '竞拍中'
+      },
+      {
+        route: 'success',
+        content: '已成交'
+      },
+      {
+        route: 'leave',
+        content: '已流拍'
+      },
+      {
+        route: 'failed',
+        content: '失败'
+      },
+      {
+        route: 'draft',
+        content: '草稿箱',
+        method: 'other',
+        onClick: function(){
+          console.log('other...')
+        }
+      }
+    ];
+    return (
+      <div className="hello-react-route-tabs">
+        <ReactRouteTabs method='replace' items={items} />
+    </div>
+    );
+  }
+}
+
+```
 
 ## props:
-| name | type | value | description |
-| :----| :----| :----| :----|
-| visible  | Boolean | true/false | v-show |
+```js
+  static propTypes = {
+    className:PropTypes.string,
+    method:PropTypes.string,
+    items:PropTypes.array,
+    mapping:PropTypes.object
+  };
 
-
-## usage:
-```html
-<react-route-tabs :visible="true" />
+  static defaultProps = {
+    className:'',
+    method: 'replace',
+    items: [],
+    mapping:{
+      route:'route',
+      content:'content'
+    }
+  };
 ```
