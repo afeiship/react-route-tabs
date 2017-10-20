@@ -26,9 +26,9 @@ export default class extends React.Component {
   };
 
   render() {
-    const {className, items, method, mapping,onClick} = this.props;
+    const {className, items, method, mapping,onClick, ...props} = this.props;
     return (
-      <div className={classNames('react-route-tabs',className)}>
+      <div className={classNames('react-route-tabs',className)} {...props}>
         {
           items.map((item,index)=>{
             return (
