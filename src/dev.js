@@ -38,7 +38,7 @@ class App extends React.Component{
     return (
       <div className="hello-react-route-tabs">
         <ReactRouteTabs onClick={this._onClick} method='replace' items={items} />
-    </div>
+      </div>
     );
   }
 }

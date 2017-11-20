@@ -11,6 +11,7 @@ export default class extends React.Component {
   static propTypes = {
     className:PropTypes.string,
     method:PropTypes.string,
+    basename:PropTypes.string,
     items:PropTypes.array,
     mapping:PropTypes.object
   };
@@ -36,14 +37,15 @@ export default class extends React.Component {
   };
 
   render() {
-    const {className, items, method, mapping,onClick, ...props} = this.props;
+    const {className, items, method, mapping, basename, onClick, ...props} = this.props;
     return (
       <div className={classNames('react-route-tabs',className)} {...props}>
         {
           items.map((item,index)=>{
+            const routeLink = basename ? `#/${basename}/${item[mapping.route]}` : `#/${item[mapping.route]}`;
             return (
               <div key={index} className="react-route-item"  onClick={item.onClick || this._onClick.bind(this, index, item)} >
-                <ReactLink method={item.method || method} href={`#/${item[mapping.route]}`}>
+                <ReactLink method={item.method || method} href={routeLink}>
                   {item[mapping.content]}
                 </ReactLink>
               </div>
