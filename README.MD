@@ -67,3 +67,9 @@ class App extends React.Component{
     }
   };
 ```
+
+
+
+## todos:
+- [ ] onClick => onChange
+- [ ] target.value -> (index,item) ?

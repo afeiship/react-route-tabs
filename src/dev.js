@@ -3,8 +3,10 @@ import './dev.scss';
 import ReactRouteTabs from './main';
 
 class App extends React.Component{
-  _onClick(a,b){
-    console.log('this',a,b)
+  _onClick(e){
+    const value = e.target.value;
+    const { index, item } = value;
+    console.log(item,index);
   }
 
   render(){
@@ -28,15 +30,14 @@ class App extends React.Component{
       {
         route: 'draft',
         content: '草稿箱',
-        method: 'other',
-        onClick: function(){
-          console.log('other...')
-        }
+        method: 'other'
       }
     ];
+
+
     return (
       <div className="hello-react-route-tabs">
-        <ReactRouteTabs method='replace' items={items} />
+        <ReactRouteTabs onClick={this._onClick} method='replace' items={items} />
     </div>
     );
   }

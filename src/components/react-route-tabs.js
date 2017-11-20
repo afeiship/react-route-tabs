@@ -16,13 +16,23 @@ export default class extends React.Component {
   };
 
   static defaultProps = {
-    className:'',
     method: 'replace',
     items: [],
     mapping:{
       route:'route',
       content:'content'
     }
+  };
+
+  _onClick = (index, item ) => {
+    const { onClick } = this.props;
+    onClick({
+      target: {
+        value: {
+          index, item
+        }
+      }
+    })
   };
 
   render() {
@@ -32,8 +42,10 @@ export default class extends React.Component {
         {
           items.map((item,index)=>{
             return (
-              <div key={index} className="react-route-item">
-                <ReactLink method={item.method || method} onClick={item.onClick || onClick} href={`#/${item[mapping.route]}`}>{item[mapping.content]}</ReactLink>
+              <div key={index} className="react-route-item"  onClick={item.onClick || this._onClick.bind(this, index, item)} >
+                <ReactLink method={item.method || method} href={`#/${item[mapping.route]}`}>
+                  {item[mapping.content]}
+                </ReactLink>
               </div>
             )
           })
