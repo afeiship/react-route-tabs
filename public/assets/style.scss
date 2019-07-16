@@ -1,0 +1,53 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+html,
+body,
+#app,
+.app-container {
+  height: 100%;
+}
+
+@import "@/components/style.scss";
+
+.app-container {
+  padding: 50px;
+  .button {
+    background: #3cc51f;
+    width: 100%;
+    display: block;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    color: #fff;
+    padding: 20px;
+    border: none;
+
+    &:active {
+      background: darken(#3cc51f, 10%);
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+  .react-route-tabs {
+    &__header {
+      border: 1px solid gray;
+      border-bottom: none;
+      padding: 10px;
+      a {
+        display: inline-block;
+        min-width: 50px;
+      }
+      a.active {
+        color: #f00;
+        font-weight: bold;
+      }
+    }
+    &__body {
+      border: 1px solid lightblue;
+      padding: 10px;
+    }
+  }
+}

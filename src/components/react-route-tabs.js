@@ -1,58 +1,80 @@
-import './style.scss';
-
-import React,{PureComponent} from 'react';
-
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import ReactLink from 'react-link';
 import classNames from 'classnames';
 import noop from 'noop';
+import objectAssign from 'object-assign';
+import { HashRouter as Router, Route, Link, NavLink } from 'react-router-dom';
+import ReactRouteTab from './react-route-tab';
 
-export default class extends React.Component {
+const CLASS_NAME = 'react-route-tabs';
+
+export default class extends Component {
+  /*===properties start===*/
   static propTypes = {
-    className:PropTypes.string,
-    method:PropTypes.string,
-    basename:PropTypes.string,
-    items:PropTypes.array,
-    mapping:PropTypes.object
+    className: PropTypes.string,
+    type: PropTypes.string,
+    headerExtra: PropTypes.element,
+    bodyExtra: PropTypes.element
   };
 
   static defaultProps = {
-    method: 'replace',
-    items: [],
-    mapping:{
-      route:'route',
-      content:'content'
-    }
+    type: 'nav'
   };
+  /*===properties end===*/
 
-  _onClick = (index, item ) => {
-    const { onClick } = this.props;
-    onClick({
-      target: {
-        value: {
-          index, item
-        }
-      }
-    })
-  };
+  get items() {
+    const { children } = this.props;
+    return React.Children.map(children, (child) => child.props);
+  }
 
   render() {
-    const {className, items, method, mapping, basename, onClick, ...props} = this.props;
+    const {
+      className,
+      headerExtra,
+      bodyExtra,
+      children,
+      type,
+      ...props
+    } = this.props;
+    const items = this.items;
+
     return (
-      <div className={classNames('react-route-tabs',className)} {...props}>
-        {
-          items.map((item,index)=>{
-            const routeLink = basename ? `#/${basename}/${item[mapping.route]}` : `#/${item[mapping.route]}`;
-            return (
-              <div key={index} className="react-route-item"  onClick={item.onClick || this._onClick.bind(this, index, item)} >
-                <ReactLink method={item.method || method} href={routeLink}>
-                  {item[mapping.content]}
-                </ReactLink>
-              </div>
-            )
-          })
-        }
-      </div>
+      <section className={classNames(CLASS_NAME, className)} {...props}>
+        <Router>
+          <header className={classNames(`${CLASS_NAME}__header`)}>
+            <nav>
+              {items.map((item) => {
+                const { title, type, ...itemProps } = item;
+                const LinkComponent = type === 'nav' ? NavLink : Link;
+                return (
+                  <LinkComponent key={item.to} {...itemProps}>
+                    {item.title}
+                  </LinkComponent>
+                );
+              })}
+            </nav>
+            {headerExtra}
+          </header>
+          <div className={classNames(`${CLASS_NAME}__body`)}>
+            {items.map((item) => {
+              return (
+                <Route
+                  key={item.to}
+                  path={item.to}
+                  component={() => (
+                    <ReactRouteTab
+                      className={`${CLASS_NAME}__content`}
+                      children={item.children}
+                    />
+                  )}
+                />
+              );
+            })}
+            {headerExtra}
+          </div>
+        </Router>
+      </section>
     );
   }
 }
