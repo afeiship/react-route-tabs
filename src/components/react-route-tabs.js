@@ -8,12 +8,13 @@ import { HashRouter as Router, Route, Link, NavLink } from 'react-router-dom';
 import ReactRouteTab from './react-route-tab';
 
 const CLASS_NAME = 'react-route-tabs';
+const TYPES = ['nav', 'link'];
 
 export default class extends Component {
   /*===properties start===*/
   static propTypes = {
     className: PropTypes.string,
-    type: PropTypes.string,
+    type: PropTypes.oneOf([TYPES]),
     headerExtra: PropTypes.element,
     bodyExtra: PropTypes.element
   };
