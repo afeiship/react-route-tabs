@@ -16,35 +16,30 @@ npm install -S afeiship/react-route-tabs
   ```
 2. import js
   ```js
-  import React from 'react';
+  import { ReactRouteTabs, ReactRouteTab } from '../src/main';
   import ReactDOM from 'react-dom';
-  import ReactRouteTabs from 'react-route-tabs';
-  
-  // your app:
-  class App extends React.Component{
-    render(){
+  import React from 'react';
+  import './assets/style.scss';
+
+  class App extends React.Component {
+    render() {
       return (
-        <ReactRouteTabs />
-      )
+        <div className="app-container">
+          <ReactRouteTabs>
+            <ReactRouteTab title="nav1" to="/nav1">
+              Tab1 Content!
+            </ReactRouteTab>
+            <ReactRouteTab title="nav2" to="/nav2">
+              Tab2 Content!
+            </ReactRouteTab>
+          </ReactRouteTabs>
+        </div>
+      );
     }
   }
 
-  // render to dom:
-  ReactDOM.render(<App/>, document.getElementById('app'));
+  ReactDOM.render(<App />, document.getElementById('app'));
   ```
 
 ## documentation
 - https://afeiship.github.io/react-route-tabs/
-
-## resouces
-- https://www.robinwieruch.de/minimal-react-webpack-babel-setup/
-- https://www.valentinog.com/blog/react-webpack-babel/
-- https://jestjs.io/docs/en/tutorial-react#snapshot-testing-with-mocks-enzyme-and-react-16
-- https://testing-library.com/docs/react-testing-library/api
-
-## todos
-- [ ] Add: semver number for every build files.
-- [ ] Add: need output css files.
-- [ ] Add: PWA support for docs.
-- [ ] Add: source.map file for dist(`you can upload for production debug`).
-- [ ] BUG: npm run dev will clean dist.
