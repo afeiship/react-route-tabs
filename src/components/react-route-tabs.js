@@ -45,7 +45,7 @@ export default class extends Component {
           <header className={classNames(`${CLASS_NAME}__header`)}>
             <nav>
               {items.map((item) => {
-                const { title, type, ...itemProps } = item;
+                const { title, ...itemProps } = item;
                 const LinkComponent = type === 'nav' ? NavLink : Link;
                 return (
                   <LinkComponent key={item.to} {...itemProps}>
