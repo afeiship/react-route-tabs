@@ -14,7 +14,7 @@ export default class extends Component {
   /*===properties start===*/
   static propTypes = {
     className: PropTypes.string,
-    type: PropTypes.oneOf([TYPES]),
+    type: PropTypes.oneOf(TYPES),
     headerExtra: PropTypes.element,
     bodyExtra: PropTypes.element
   };
