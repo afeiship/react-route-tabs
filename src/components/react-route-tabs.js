@@ -72,7 +72,7 @@ export default class extends Component {
                 />
               );
             })}
-            {headerExtra}
+            {bodyExtra}
           </div>
         </Router>
       </section>
