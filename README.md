@@ -26,10 +26,10 @@ npm install -S afeiship/react-route-tabs
       return (
         <div className="app-container">
           <ReactRouteTabs>
-            <ReactRouteTab title="nav1" to="/nav1">
+            <ReactRouteTab title="nav1" replace to="/nav1">
               Tab1 Content!
             </ReactRouteTab>
-            <ReactRouteTab title="nav2" to="/nav2">
+            <ReactRouteTab title="nav2" replace to="/nav2">
               Tab2 Content!
             </ReactRouteTab>
           </ReactRouteTabs>

@@ -11,6 +11,7 @@ const CLASS_NAME = 'react-route-tabs';
 const TYPES = ['nav', 'link'];
 
 export default class extends Component {
+  static displayName = CLASS_NAME;
   /*===properties start===*/
   static propTypes = {
     className: PropTypes.string,
@@ -26,7 +27,10 @@ export default class extends Component {
 
   get items() {
     const { children } = this.props;
-    return React.Children.map(children, (child) => child.props);
+    return React.Children.map(children, (child) => {
+      console.log(child.props);
+      return child.props;
+    });
   }
 
   render() {
