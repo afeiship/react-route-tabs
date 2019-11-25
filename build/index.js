@@ -1,4 +1,10 @@
-import { configs, inputs, outputs, loaders, plugins } from 'webpack-lib-kits';
+import {
+  configs,
+  inputs,
+  outputs,
+  loaders,
+  plugins
+} from '@feizheng/webpack-lib-kits';
 
 export default {
   mode: configs.mode(),

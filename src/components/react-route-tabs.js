@@ -2,9 +2,14 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import noop from 'noop';
+import noop from '@feizheng/noop';
 import objectAssign from 'object-assign';
-import { HashRouter as Router, Route, Link, NavLink } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  NavLink
+} from 'react-router-dom';
 import ReactRouteTab from './react-route-tab';
 
 const CLASS_NAME = 'react-route-tabs';

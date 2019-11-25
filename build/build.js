@@ -7,7 +7,7 @@ import {
   loaders,
   plugins,
   externals
-} from 'webpack-lib-kits';
+} from '@feizheng/webpack-lib-kits';
 
 export default merge(baseConfig, {
   entry: inputs.build(),

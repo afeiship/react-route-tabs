@@ -3,7 +3,7 @@
 
 ## install
 ```shell
-npm install -S afeiship/react-route-tabs
+npm install -S @feizheng/react-route-tabs
 ```
 
 ## usage
